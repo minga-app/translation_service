@@ -11,3 +11,5 @@ build/
 doc/api/
 
 credentials.dart
+
+lib/l10n
