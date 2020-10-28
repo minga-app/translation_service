@@ -6,8 +6,9 @@ description: A starting point for Dart libraries or applications.
 environment:
   sdk: '>=2.7.0 <3.0.0'
 
-#dependencies:
-#  path: ^1.6.0
+dependencies:
+  gsheets: ^0.2.6
+  intl: ^0.16.1
 
 dev_dependencies:
   dartclub_lint: ^0.2.1
