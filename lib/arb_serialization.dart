@@ -24,6 +24,7 @@ class ArbSerializer {
         }
       });
     });
-    return jsonEncode(result);
+    var encoder = JsonEncoder.withIndent('    ');
+    return encoder.convert(result);
   }
 }
