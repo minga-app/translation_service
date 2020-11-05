@@ -1,18 +1,19 @@
 import 'dart:io';
 
 import 'package:gsheets/gsheets.dart';
-import 'package:translation_service/arb_serialization.dart';
-import 'package:translation_service/credentials.dart';
+import 'arb_serialization.dart';
+import 'credentials.dart';
 
+final PATH = '/Users/lukashimsel/Projects/minga-app/minga_app/lib/l10n';
 main() async {
   var sheets = GSheets(
     CREDENTIALS,
   );
   var doc =
       await sheets.spreadsheet('1honvi8nbgiYS0jk4hYbFDNa2i-yoNf0EMmSLhcgTTvo');
-
-  if (!await Directory('./l10n').exists()) {
-    await Directory('./l10n').create();
+  var dir = Directory(PATH);
+  if (!await dir.exists()) {
+    await dir.create();
   }
   for (var sheet in doc.sheets) {
     var context = sheet.title;
@@ -27,7 +28,7 @@ main() async {
       );
       var data = Map.fromIterables(keys, values);
       var serializer = ArbSerializer.parse(locale, data, context);
-      await File('./l10n/intl_$locale.arb')
+      await File('$PATH/intl_$locale.arb')
           .writeAsString(serializer.serialize());
     }
   }
