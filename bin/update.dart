@@ -34,12 +34,18 @@ main() async {
       await File('$PATH/intl_$locale.arb')
           .writeAsString(serializer.serialize());
 
-      var rowCount = sheet.rowCount;
       var messages = extractMessages('./lib/main.dart');
       for (var key in messages.keys) {
-        if (sheetsKeys.contains(key)) {
-          await sheet.insertRow(rowCount + 1);
-          // insert new key here
+        var en = messages[key].expanded().replaceFirst('Literal(', '');
+        if (en.endsWith(')')) {
+          en = en.substring(0, en.length - 1);
+        }
+        print('$key -> ${en}');
+        if (!sheetsKeys.contains(key)) {
+          await sheet.values.appendRow([
+            key,
+            en,
+          ]);
         }
       }
     }
