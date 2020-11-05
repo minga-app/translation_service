@@ -1,10 +1,11 @@
 import 'dart:io';
 
 import 'package:gsheets/gsheets.dart';
-import 'arb_serialization.dart';
-import 'credentials.dart';
+import 'package:translation_service/arb_serialization.dart';
+import 'package:translation_service/credentials.dart';
 
-final PATH = '/Users/lukashimsel/Projects/minga-app/minga_app/lib/l10n';
+final PATH = './lib/l10n';
+
 main() async {
   var sheets = GSheets(
     CREDENTIALS,
