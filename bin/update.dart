@@ -40,7 +40,7 @@ main() async {
         if (en.endsWith(')')) {
           en = en.substring(0, en.length - 1);
         }
-        print('$key -> ${en}');
+        print('$key -> $en');
         if (!sheetsKeys.contains(key)) {
           await sheet.values.appendRow([
             key,
